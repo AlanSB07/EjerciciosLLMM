@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Magic Alonso HTML5</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+      font-family: sans-serif;
+      gap: 40px;
+      overflow: hidden; /* Evita barras de desplazamiento */
+    }
+
+    /* Título palpitando en rojo */
+    h1 {
+      margin: 0;
+      color: red;
+      font-size: 4rem;
+      text-transform: uppercase;
+      text-align: center;
+      animation: palpitacion-texto 1s infinite ease-in-out;
+    }
+
+    /* Contenedor principal de la pista */
+    .pista-desfile {
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+    }
+
+    /* La cinta que se mueve de izquierda a derecha */
+    .cinta-fotos {
+      display: flex;
+      width: max-content;
+      /* 15 segundos para dar toda la vuelta (cámbialo a 10s si quieres que vayan más rápido) */
+      animation: desfile-hacia-derecha 15s linear infinite;
+    }
+
+    /* Grupo de fotos */
+    .grupo {
+      display: flex;
+      gap: 50px;             /* Separación entre cada foto */
+      padding-right: 50px;
+    }
+
+    /* Cada foto de manera individual */
+    .foto-individual {
+      height: 320px;         /* Tamaño de las fotos */
+      max-width: 45vh;
+      width: auto;
+      border-radius: 14px;
+      object-fit: cover;
+      animation: palpitacion-imagen 1s infinite ease-in-out;
+      flex-shrink: 0;
+    }
+
+    /* Movimiento continuo de izquierda a derecha sin cortes */
+    @keyframes desfile-hacia-derecha {
+      0% {
+        transform: translateX(-50%);
+      }
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
+    /* Palpitación del texto */
+    @keyframes palpitacion-texto {
+      0%, 100% {
+        transform: scale(1);
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+      }
+      50% {
+        transform: scale(1.15);
+        text-shadow: 0 0 25px red, 0 0 50px red;
+      }
+    }
+
+    /* Palpitación individual de cada imagen */
+    @keyframes palpitacion-imagen {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+      }
+      50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 35px red;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>EL NANO</h1>
+
+  <!-- Pista donde desfilan las fotos de manera individual -->
+  <div class="pista-desfile">
+    <div class="cinta-fotos">
+
+      <!-- Bloque con tus 5 fotos individuales -->
+      <div class="grupo">
+        <img class="foto-individual" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRza9vPrbonASTMsBI31B3RjdXELIxPo3iXfrSRRsGPoA&s=10" alt="Alonso 1">
+        <img class="foto-individual" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkvJ3sep6yHmiALtuS_C_0GnNY0mvbxLnYEj9RvzH9_g&s=10" alt="Alonso 2">
+        <img class="foto-individual" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPgWGZ2yrhJsuNwrgMkd0veE75lZESJNpZJerMlHyn4Q&s=10" alt="Alonso 3">
+        <img class="foto-individual" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDX5WFOyx03UdE1Ue8vXlk4-QQBnFBYeY5oqoVz-JRzg&s=10" alt="Alonso 4">
+        <img class="foto-individual" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPa3Jf9pJwVH_TtU2LfnROgvxYFiwUMj48V37jxf54kw&s=10" alt="Alonso 5">
+      </div>
+
+      <!-- Duplicado idéntico para que el bucle sea infinito y perfecto sin que haya huecos vacíos -->
+      <div class="grupo" aria-hidden="true">
+        <img class="foto-individual" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRza9vPrbonASTMsBI31B3RjdXELIxPo3iXfrSRRsGPoA&s=10" alt="Alonso 1">
+        <img class="foto-individual" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkvJ3sep6yHmiALtuS_C_0GnNY0mvbxLnYEj9RvzH9_g&s=10" alt="Alonso 2">
+        <img class="foto-individual" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPgWGZ2yrhJsuNwrgMkd0veE75lZESJNpZJerMlHyn4Q&s=10" alt="Alonso 3">
+        <img class="foto-individual" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDX5WFOyx03UdE1Ue8vXlk4-QQBnFBYeY5oqoVz-JRzg&s=10" alt="Alonso 4">
+        <img class="foto-individual" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPa3Jf9pJwVH_TtU2LfnROgvxYFiwUMj48V37jxf54kw&s=10" alt="Alonso 5">
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
